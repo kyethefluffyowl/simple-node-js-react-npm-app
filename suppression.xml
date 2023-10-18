@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+   <suppress>
+      <notes><![CDATA[
+      file name: css-what:3.4.2
+      ]]></notes>
+      <packageUrl regex="true">^pkg:npm/css\-what@.*$</packageUrl>
+      <vulnerabilityName>CVE-2022-21222</vulnerabilityName>
+   </suppress>
+</suppressions>
