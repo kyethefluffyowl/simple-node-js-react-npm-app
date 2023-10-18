@@ -5,7 +5,13 @@ pipeline {
             args '-p 3000:3000' 
         }
     }
-stage('OWASP Dependency-Check Vulnerabilities') {
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'npm install' 
+            }
+        }
+	stage('OWASP Dependency-Check Vulnerabilities') {
 	      steps {
 	        dependencyCheck additionalArguments: ''' 
 	                    -o './'
@@ -14,15 +20,8 @@ stage('OWASP Dependency-Check Vulnerabilities') {
 	                    --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities Lab06'
 	        
 	        dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-	      }
-	    }
-	
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'npm install' 
-            }
-        }
+		}
+	}
 	
         // stage('Test') {
         //     steps {
